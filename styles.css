@@ -1,0 +1,131 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: Gotham Rounded, sans-serif;
+}
+
+body {
+  background-image: linear-gradient(
+    to right,
+    rgba(109, 162, 232),
+    rgba(54, 224, 218)
+  );
+
+  /* to center the clock */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* to hide the scroll bar */
+  overflow: hidden;
+}
+
+/* setting the clock shap */
+.clock {
+  width: 300px;
+  height: 300px;
+  background-color: rgba(225, 225, 225, 0.7);
+  border-radius: 50%;
+  border: 2px solid black;
+  position: relative;
+}
+
+/* position the numbers */
+.clock .number {
+  /* set the rotaion value set to 0 */
+  --rotation: 0;
+  /* to make them relative to the clock */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  /* rotate the numbers */
+  transform: rotate(var(--rotation));
+  font-size: 1.5rem;
+}
+
+.clock .number1 {
+  --rotation: 30deg;
+}
+.clock .number2 {
+  --rotation: 60deg;
+}
+.clock .number3 {
+  --rotation: 90deg;
+}
+.clock .number4 {
+  --rotation: 120deg;
+}
+.clock .number5 {
+  --rotation: 150deg;
+}
+.clock .number6 {
+  --rotation: 180deg;
+}
+.clock .number7 {
+  --rotation: 210deg;
+}
+.clock .number8 {
+  --rotation: 240deg;
+}
+.clock .number9 {
+  --rotation: 270deg;
+}
+.clock .number10 {
+  --rotation: 300deg;
+}
+.clock .number11 {
+  --rotation: 330deg;
+}
+
+/* position all hands */
+.clock .hand {
+  --rotation: 0;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+
+  background-color: black;
+  /* to apply the transform form the bottom */
+  transform-origin: bottom;
+  /* to place the hand exactly on the numbers */
+  transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+  border: 1px solid white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  /* to make the hands on top of the numbers */
+  z-index: 10;
+}
+
+/* the black circle in the center */
+.clock::after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  z-index: 11;
+  width: 15px;
+  height: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.clock .hand.second {
+  width: 5px;
+  height: 45%;
+  background-color: red;
+}
+
+.clock .hand.minute {
+  width: 7px;
+  height: 40%;
+  background-color: black;
+}
+
+.clock .hand.hour {
+  width: 10px;
+  height: 35%;
+  background-color: black;
+}
